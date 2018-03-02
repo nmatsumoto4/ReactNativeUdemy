@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
-import MemoList from './src/components/MemoList';
 import Appbar from './src/components/appBar';
-import CircleButton from './src/elements/circleButton';
+
+import MemoListScreen from './src/screens/MemoListScreen';
+import MemoDetailScreen from './src/screens/MemoDetailScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFDF6',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 72,
+    paddingTop: 78,
   },
 
 
@@ -22,8 +22,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Appbar />
-        <MemoList />
-        <CircleButton >+</CircleButton>
+        <MemoDetailScreen />
       </View>
     );
   }

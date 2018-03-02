@@ -16,7 +16,7 @@ class BodyText extends React.Component {
         <Text style={styles.text}>{this.props.children}</Text>
       </View>
     );
-  } ''
+  }
 }
 
 export default BodyText;

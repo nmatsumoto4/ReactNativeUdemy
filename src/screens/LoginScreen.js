@@ -44,7 +44,7 @@ class LoginScreen extends Component {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
         console.log(user);
-        this.props.navigation.navigate('Home');
+        this.props.navigation.navigate('Home', { currentUser: user });
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +52,7 @@ class LoginScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.cotainer}>sa
+      <View style={styles.cotainer}>
         <Text style={styles.title}>ログイン</Text>
         <TextInput
           onChangeText={(text) => { this.setState({ email: text }); }}

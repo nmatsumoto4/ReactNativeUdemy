@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 
+require('firebase/firestore');
 
 import MemoListScreen from './src/screens/MemoListScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen';
@@ -10,6 +11,7 @@ import MemoEditScreen from './src/screens/MemoEditScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignUpScreen from './src/screens/SignUpScreen';
 import ENV from './env.json';
+import MemoCreateScreen from './src/screens/MemoCreateScreen';
 
 const config = {
   apiKey: ENV.FIREBASE_API_KEY,
@@ -25,9 +27,9 @@ if (!firebase.apps.length) {
 
 const App = StackNavigator(
   {
-
     Login: { screen: LoginScreen },
     SignUp: { screen: SignUpScreen },
+    MemoCreate: { screen: MemoCreateScreen },
 
     Home: { screen: MemoListScreen },
     MemoDetail: { screen: MemoDetailScreen },

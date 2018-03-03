@@ -27,8 +27,7 @@ class MemoListScreen extends Component {
   componentWillMount() {
     const { currentUser } = firebase.auth();
     firebase.firestore().collection(`users/${currentUser.uid}/memos`)
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         const memoList = [];
         snapshot.forEach((doc) => {
           memoList.push({
@@ -37,9 +36,6 @@ class MemoListScreen extends Component {
           });
         });
         this.setState({ memoList });
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
   handlePress() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
+import firebase from 'firebase';
 import CircleButton from '../elements/circleButton';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
@@ -25,16 +26,44 @@ const styles = StyleSheet.create({
 });
 
 class MemoEditScreen extends Component {
+  state = {
+    body: '',
+    key: '',
+  }
+
+  componentWillMount() {
+    const { params } = this.props.navigation.state;
+    this.setState({
+      body: params.memo.body,
+      key: params.memo.key,
+    });
+  }
+  handlePress() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key)
+      .update({
+        body: this.state.body,
+      })
+      .then(() => {
+        console.log('success');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <TextInput
           multiline
           style={styles.memoEditInput}
-          value="s"
+          value={this.state.body}
+          onChangeText={(text) => { this.setState({ body: text }); }}
         />
 
-        <CircleButton onPress={() => { this.props.navigation.goBack(); }}>
+        <CircleButton onPress={this.handlePress.bind(this)}>
           <MaterialIcons name="check" style={styles.circleButtonTitle} />
         </CircleButton>
       </View>

@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flex: 1,
   },
+  memoBody: {
+    lineHeight: 22,
+    fontSize: 14,
+  },
   editButton: {
     top: 75,
   },
@@ -43,29 +47,43 @@ const styles = StyleSheet.create({
     color: '#E31676',
   },
 
-
 });
+const dateString = (date) => {
+  return date.toISOString().split('T')[0];
+};
+
 
 class MemoDetailScreen extends Component {
+  state = {
+    memo: {},
+  }
+
+  componentWillMount() {
+    const { params } = this.props.navigation.state;
+    this.setState({ memo: params.memo });
+  }
+
+
   render() {
+    const { memo } = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.memoHeader} >
           <View >
-            <Text style={styles.memoHeaderTitle}>講座のアイデア</Text>
-            <Text style={styles.memoHeaderDate}>2017/12/12</Text>
+            <Text style={styles.memoHeaderTitle}>{memo.body.substring(0, 10)}</Text>
+            <Text style={styles.memoHeaderDate}>{dateString(memo.createdOn)}</Text>
 
           </View>
         </View>
         <View style={styles.memoContent}>
-          <Text >
-            講座のアイデアです。
+          <Text style={styles.memoBody}>
+            {memo.body}
           </Text>
         </View>
         <CircleButton
           color="white"
           style={styles.editButton}
-          onPress={() => { this.props.navigation.navigate('MemoEdit'); }}
+          onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}
         >
           <MaterialIcons
             style={styles.circleButtonTitle}

@@ -4,6 +4,8 @@ import Appbar from './src/components/appBar';
 
 import MemoListScreen from './src/screens/MemoListScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen';
+import MemoEditScreen from './src/screens/MemoEditScreen';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +24,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Appbar />
-        <MemoDetailScreen />
+        <MemoEditScreen />
       </View>
     );
   }

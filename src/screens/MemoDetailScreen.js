@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import CircleButton from '../elements/circleButton';
+import { Font } from 'expo';
+import { MaterialIcons } from '@expo/vector-icons';
 
+import CircleButton from '../elements/circleButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,6 +37,11 @@ const styles = StyleSheet.create({
   editButton: {
     top: 75,
   },
+  circleButtonTitle: {
+    fontSize: 24,
+    lineHeight: 32,
+    color: '#E31676',
+  },
 
 
 });
@@ -58,8 +65,14 @@ class MemoDetailScreen extends Component {
         <CircleButton
           color="white"
           style={styles.editButton}
-        >+
+        >
+          <MaterialIcons
+            style={styles.circleButtonTitle}
+            name="edit"
+          />
+
         </CircleButton>
+
       </View>
     );
   }

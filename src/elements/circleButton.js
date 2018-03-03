@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { Font } from 'expo';
 
 const styles = StyleSheet.create({
-  memoAddButton: {
+  circleButton: {
     position: 'absolute',
     bottom: 32,
     right: 32,
     width: 48,
     height: 48,
-    backgroundColor: '#E31676',
     borderRadius: 24,
     justifyContent: 'center',
     alignItems: 'center',
@@ -21,27 +21,19 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     zIndex: 10,
   },
-  memoAddButtonTitle: {
-    fontSize: 32,
-    lineHeight: 32,
-    color: '#fff',
-  },
+
 });
 
 class CircleButton extends Component {
   render() {
     const { style, color } = this.props;
     let bgColor = '#E31676';
-    let textColor = '#fff';
     if (color === 'white') {
       bgColor = '#fff';
-      textColor = '#E31676';
     }
     return (
-      <View style={[styles.memoAddButton, style, { backgroundColor: bgColor }]}>
-        <Text style={[styles.memoAddButtonTitle, { color: textColor }]}>
-          {this.props.children}
-        </Text>
+      <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
+        {this.props.children}
       </View>
     );
   }

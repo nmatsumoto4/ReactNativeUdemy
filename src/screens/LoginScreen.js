@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableHighlight, Text, TextInput } from 'react-native';
+import firebase from 'firebase';
 
 const styles = StyleSheet.create({
   cotainer: {
@@ -35,21 +36,45 @@ const styles = StyleSheet.create({
 });
 
 class LoginScreen extends Component {
+  state = {
+    email: '',
+    password: '',
+  }
+  handleSubmit() {
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then((user) => {
+        console.log(user);
+        this.props.navigation.navigate('Home');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
   render() {
     return (
-      <View style={styles.cotainer}>
+      <View style={styles.cotainer}>sa
         <Text style={styles.title}>ログイン</Text>
         <TextInput
+          onChangeText={(text) => { this.setState({ email: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
           style={styles.input}
-          value="Email Address"
+          value={this.state.email}
+          placeholder="Email Address"
         />
         <TextInput
+          onChangeText={(text) => { this.setState({ password: text }); }}
           style={styles.input}
-          value="Password"
+          value={this.state.password}
+          placeholder="Password"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
+
         />
         <TouchableHighlight
           style={styles.button}
-          onPress={() => { }}
+          onPress={this.handleSubmit.bind(this)}
         >
           <Text style={styles.buttonTitle}>
             ログインする

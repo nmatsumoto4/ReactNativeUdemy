@@ -34,7 +34,7 @@ class MemoEditScreen extends Component {
           value="s"
         />
 
-        <CircleButton >
+        <CircleButton onPress={() => { this.props.navigation.goBack(); }}>
           <MaterialIcons name="check" style={styles.circleButtonTitle} />
         </CircleButton>
       </View>

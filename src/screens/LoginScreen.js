@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
 
 class LoginScreen extends Component {
   state = {
-    email: '',
-    password: '',
+    email: 'nmatsumoto4@gmail.com',
+    password: 'ul8gul8g',
   }
   handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)

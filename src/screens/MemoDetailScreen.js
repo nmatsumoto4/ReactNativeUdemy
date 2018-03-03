@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -65,6 +65,7 @@ class MemoDetailScreen extends Component {
         <CircleButton
           color="white"
           style={styles.editButton}
+          onPress={() => { this.props.navigation.navigate('MemoEdit'); }}
         >
           <MaterialIcons
             style={styles.circleButtonTitle}

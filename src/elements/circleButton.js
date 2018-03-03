@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Font } from 'expo';
 
 const styles = StyleSheet.create({
-  circleButton: {
+  container: {
     position: 'absolute',
     bottom: 32,
     right: 32,
+
+  },
+  circleButton: {
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -32,9 +35,16 @@ class CircleButton extends Component {
       bgColor = '#fff';
     }
     return (
-      <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
-        {this.props.children}
-      </View>
+      <TouchableHighlight
+        onPress={this.props.onPress}
+        style={[styles.container, style]}
+        underlayColor="transparent"
+      >
+        <View style={[styles.circleButton, { backgroundColor: bgColor }]}>
+          {this.props.children}
+        </View>
+      </TouchableHighlight>
+
     );
   }
 }

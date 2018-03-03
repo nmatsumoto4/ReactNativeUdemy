@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    backgroundColor: '#FFFDF6',
   },
   circleButtonTitle: {
     fontSize: 24,
@@ -24,8 +25,8 @@ class MemoListScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <MemoList />
-        <CircleButton >
+        <MemoList navigation={this.props.navigation} />
+        <CircleButton onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
           <MaterialIcons name="add" style={styles.circleButtonTitle} />
         </CircleButton>
       </View>

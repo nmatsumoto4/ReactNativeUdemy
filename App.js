@@ -5,6 +5,8 @@ import Appbar from './src/components/appBar';
 import MemoListScreen from './src/screens/MemoListScreen';
 import MemoDetailScreen from './src/screens/MemoDetailScreen';
 import MemoEditScreen from './src/screens/MemoEditScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import SignUpScreen from './src/screens/SignUpScreen';
 
 
 const styles = StyleSheet.create({
@@ -24,7 +26,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Appbar />
-        <MemoEditScreen />
+        <SignUpScreen />
       </View>
     );
   }
